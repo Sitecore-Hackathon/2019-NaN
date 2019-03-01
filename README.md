@@ -1,4 +1,4 @@
-﻿![Hackathon Logo](documentation/images/hackathon.png?raw=true "Hackathon Logo")
+![Hackathon Logo](documentation/images/hackathon.png?raw=true "Hackathon Logo")
 
 # Submission Boilerplate 
 
@@ -36,3 +36,4 @@ All teams are required to submit the following as part of their entry submission
   - What problem was solved
   - How did you solve it
   - What is the end result
+
