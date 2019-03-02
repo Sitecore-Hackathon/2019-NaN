@@ -51,7 +51,7 @@ namespace Hackathon.Boilerplate.Project.ConsoleGenerator
             var defaultInteractionQuery = UTEntitiesBuilder.Interaction()
                                                        .ChannelId(channelId)
                                                        .Initiator(InteractionInitiator.Brand)
-                                                       .Contact(IdentificationSource, "112233");
+                                                       .Contact(IdentificationSource, interaction.Key);
 
             var defaultInteraction = defaultInteractionQuery.Build();
             using (var session = SitecoreUTSessionBuilder.SessionWithHost(instanceUrl)

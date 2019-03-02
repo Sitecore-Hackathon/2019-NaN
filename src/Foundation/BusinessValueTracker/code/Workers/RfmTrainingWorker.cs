@@ -97,11 +97,10 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Workers
                             {
                                 if (!contact.IsKnown)
                                 {
-                                    var identifierToRemove = contact.Identifiers.FirstOrDefault(x => x.Source == Constants.XConnect.IdentificationSource);
-                                    if (identifierToRemove != null)
+                                    var identifierToRemove = contact.Identifiers.FirstOrDefault(x => x.Source == Constants.XConnect.IdentificationSourceEmail);
+                                    if (identifierToRemove == null)
                                     {
-                                        var newIdentifier = new ContactIdentifier(Constants.XConnect.IdentificationSource, identifier, ContactIdentifierType.Known);
-                                        xdbContext.RemoveContactIdentifier(contact, identifierToRemove);
+                                        var newIdentifier = new ContactIdentifier(Constants.XConnect.IdentificationSourceEmail, identifier, ContactIdentifierType.Known);
                                         xdbContext.AddContactIdentifier(contact, newIdentifier);
                                     }
                                 }
