@@ -55,14 +55,12 @@ Install the sitecore package [BusinessValueTracker.zip](https://github.com/Sitec
 ### Step 2: 
 Unpack the archive [Demo.zip](https://github.com/Sitecore-Hackathon/2019-NaN/install/Demo.zip) to any folder and run the "InitialImport.ps1" script from Power Shell to import the demo data if your Collection host of Universal Tracker has a name 'http://sitecore.tracking.collection.service/'. You can edit the Power Shell script by adding the "-h " parameter with your own url. The demo data contains user generated events for Universal Tracker service.
 
+## Usage
+
 To see how the module works, you can use Power Shell scripts:
 
 - To simulate the most important business customers use the script GenerateMostValuableUser.ps1
 - To simulate the least valuable business customers customers use the script GenerateLeastValuableUser.ps1
-
-
-## Usage
-
 
 Console utilite to generate interactions.
 Paramters:
