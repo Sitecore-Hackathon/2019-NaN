@@ -2,7 +2,7 @@
 
 namespace Hackathon.Boilerplate.Project.ConsoleGenerator
 {
-    class Interaction
+    public class Interaction
     {
         public int CustomerId { get; set; }
         public DateTime Timestamp { get; set; }

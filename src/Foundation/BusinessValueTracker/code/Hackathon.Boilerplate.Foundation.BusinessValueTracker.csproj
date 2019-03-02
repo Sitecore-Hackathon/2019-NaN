@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(ProjectDir)..\..\..\..\BuildConfiguration.csproj" Condition="Exists('$(ProjectDir)..\..\..\..\BuildConfiguration.csproj')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -23,7 +23,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-	<TargetFrameworkProfile />
+    <TargetFrameworkProfile />
     <Use64BitIISExpress />
     <NoWarn>NU1603</NoWarn>
   </PropertyGroup>
@@ -44,7 +44,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-<Choose>
+  <Choose>
     <When Condition="'$(LocalReferences)' == 'true'">
       <ItemGroup>
         <Reference Include="Sitecore.Analytics.Core">
@@ -131,11 +131,71 @@
   </Choose>
   <ItemGroup>
     <Content Include="App_Config\Include\Foundation\Foundation.BusinessValueTracker.config" />
-	<Content Include="App_Config\Include\Foundation\Foundation.BusinessValueTracker.Serialization.config" />
   </ItemGroup>
-   <ItemGroup>
+  <ItemGroup>
+    <Compile Include="Constants.cs" />
+    <Compile Include="Extentions\ContactModelMapper.cs" />
+    <Compile Include="Facets\RfmContactFacet.cs" />
+    <Compile Include="Models\Cortex\ContactProjectionModel.cs" />
+    <Compile Include="Models\Cortex\DemoGoalsProjectionModel.cs" />
+    <Compile Include="Models\Cortex\PredictionResult.cs" />
+    <Compile Include="Models\Cortex\RfmStatistics.cs" />
+    <Compile Include="Models\CustomerBusinessValue.cs" />
+    <Compile Include="Models\Events\DemoGoal.cs" />
+    <Compile Include="Models\Events\EventType.cs" />
+    <Compile Include="Processors\ConvertDemoGoal.cs" />
+    <Compile Include="Processors\TaskAgent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\MLService.cs" />
+    <Compile Include="Workers\RfmEvaluationWorker.cs" />
+    <Compile Include="Workers\RfmTrainingWorker.cs" />
+    <Compile Include="Workers\RfmTrainingWorkerOptionsDictionary.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Sitecore.Processing.Common">
+      <HintPath>..\..\..\..\..\..\hackathon-2019\src\Foundation\ProcessingEngine\code\libs\Sitecore.Processing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Processing.Engine">
+      <HintPath>..\..\..\..\lib\Sitecore.Processing.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Processing.Engine.Abstractions">
+      <HintPath>..\..\..\..\lib\Sitecore.Processing.Engine.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Processing.Engine.ML">
+      <HintPath>..\..\..\..\lib\Sitecore.Processing.Engine.ML.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Processing.Engine.ML.Abstractions">
+      <HintPath>..\..\..\..\lib\Sitecore.Processing.Engine.ML.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Processing.Engine.Projection">
+      <HintPath>..\..\..\..\lib\Sitecore.Processing.Engine.Projection.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Processing.Engine.Scripting">
+      <HintPath>..\..\..\..\..\..\hackathon-2019\src\Foundation\ProcessingEngine\code\libs\Sitecore.Processing.Engine.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Processing.Engine.Scripting.Abstractions">
+      <HintPath>..\..\..\..\..\..\hackathon-2019\src\Foundation\ProcessingEngine\code\libs\Sitecore.Processing.Engine.Scripting.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Processing.Engine.Scripting.Mrs">
+      <HintPath>..\..\..\..\..\..\hackathon-2019\src\Foundation\ProcessingEngine\code\libs\Sitecore.Processing.Engine.Scripting.Mrs.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Processing.Engine.Storage">
+      <HintPath>..\..\..\..\lib\Sitecore.Processing.Engine.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Processing.Engine.Storage.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\Sitecore.Processing.Engine.Storage.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Processing.Tasks.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\Sitecore.Processing.Tasks.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Processing.Tasks.Options, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\Sitecore.Processing.Tasks.Options.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -143,7 +203,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
-   <ProjectExtensions>
+  <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
@@ -161,7 +221,6 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
- 
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

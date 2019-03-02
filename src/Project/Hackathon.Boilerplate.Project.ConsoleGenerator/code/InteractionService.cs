@@ -6,7 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using Sitecore.UniversalTrackerClient.UserRequest;
 
 namespace Hackathon.Boilerplate.Project.ConsoleGenerator
 {
@@ -36,20 +38,20 @@ namespace Hackathon.Boilerplate.Project.ConsoleGenerator
 
         private async Task PushInteractiosToUT(IEnumerable<Interaction> interactions)
         {
-            string channelId = "27b4e611-a73d-4a95-b20a-811d295bdf65";
-            string definitionId = "01f8ffbf-d662-4a87-beee-413307055c48";
+            string IdentificationSource = "demo";
+            string channelId = Guid.Parse("DF9900DE-61DD-47BF-9628-058E78EF05C6").ToString();
+
             foreach (var interaction in interactions.GroupBy(x => x.CustomerId))
             {
-                var events = interaction.Select(x => new UTEvent(x.Timestamp, new Dictionary<string, string>(),
-                    "", "", x.GoalValue, "", "", null, "")).ToArray();
+                var events = interaction.Select(x => x.GetEvent()).ToArray();
                 var defaultInteractionQuery = UTEntitiesBuilder.Interaction()
                                                            .ChannelId(channelId)
-                                                           .Initiator(InteractionInitiator.Contact)
-                                                           .Contact("jsdemo", "demo");
-                foreach (var e in events)
-                {
-                    defaultInteractionQuery.AddEvents(e);
-                }
+                                                           .Initiator(InteractionInitiator.Brand)
+                                                           .Contact(IdentificationSource, interaction.Key.ToString());
+                //foreach (var e in events)
+                //{
+                //    defaultInteractionQuery.AddEvents(e);
+                //}
 
                 var defaultInteraction = defaultInteractionQuery.Build();
                 using (var session = SitecoreUTSessionBuilder.SessionWithHost(instanceUrl)
@@ -57,10 +59,17 @@ namespace Hackathon.Boilerplate.Project.ConsoleGenerator
                                                         .BuildSession()
                         )
                 {
-                    var eventRequest = UTRequestBuilder.EventWithDefenitionId(definitionId)
-                                                       .Timestamp(DateTime.Now).Build();
-                    var eventResponse = await session.TrackEventAsync(eventRequest);
-                    Console.WriteLine("Track EVENT RESULT: " + eventResponse.StatusCode);
+                    foreach (var e in events)
+                    {
+                        var eventRequest = UTRequestBuilder.GoalEvent(e.DefinitionId, e.Timestamp.GetValueOrDefault())
+                                .EngagementValue(e.EngagementValue.GetValueOrDefault())
+                                .AddCustomValues(e.CustomValues)
+                                .Duration(new TimeSpan(3000))
+                                .ItemId(e.ItemId)
+                                .Text(e.Text).Build();
+                        var eventResponse = await session.TrackGoalAsync(eventRequest);
+                        Console.WriteLine("Track EVENT RESULT: " + eventResponse.StatusCode);
+                    }
                 }
                 Console.WriteLine($"Customer {interaction.Key} imported");
             }

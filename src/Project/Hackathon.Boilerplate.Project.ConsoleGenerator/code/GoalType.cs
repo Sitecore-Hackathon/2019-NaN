@@ -3,8 +3,10 @@
     public enum GoalType
     {
         PageView = 0,
-        ItemAddToCart = 1,
-        OrderPayed = 2,
+        AddToFavorite = 1,
+        FillTheForm = 2,
+        PriceDownload = 3,
+        Booking = 4,
     }
 
 
