@@ -33,6 +33,10 @@ Module has no dependencies on other specific modules. Since we implement our mod
 
 ## Installation
 
+Perform the following steps to install the module:
+
+- Use the Sitecore Installation Wizard to install the package
+- Upload demo data using the console application
 
 ## Configuration
 
