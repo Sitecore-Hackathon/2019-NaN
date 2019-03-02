@@ -66,7 +66,21 @@ If the script fails, copy the configuration files to the following xConnect fold
 - \\App_Data\\Models"
 - \\App_Data\\jobs\\continuous\\IndexWorker\\App_data\\Models"
 
-### Step 2: 
+### Step 3
+You need to make a modification to the file sc.XConnect.Client.xml which is located in the following directory:
+sc91.xconnect.sc\App_Data\jobs\continuous\ProcessingEngine\App_Data\Config\Sitecore\XConnect\
+
+Insert the next code
+```xml
+<CustomModel>
+	<TypeName>Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Xdb.XdbContactModel, Hackathon.Boilerplate.Foundation.BusinessValueTracker</TypeName>
+	<PropertyName>Model</PropertyName>
+</CustomModel>
+```
+in the section:
+Settings/Sitecore/XConnect.Client/Client.ConfigurationServices/Client.Configuration/Options/Models/
+
+### Step 4: 
 Unpack the archive [Demo.zip](https://github.com/Sitecore-Hackathon/2019-NaN/blob/sc.package/Demo.zip) to any folder. 
 Run the "InitialImport.ps1" script from Power Shell to import the demo data if your Collection host of Universal Tracker has a name 'http://sitecore.tracking.collection.service/'. You can edit the Power Shell script by adding the "-h " parameter with your own url. The demo data contains user generated events for Universal Tracker service.
 
