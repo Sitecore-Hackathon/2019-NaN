@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models
+﻿namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Clients
 {
     public class CustomerBusinessValue
     {
-
         public double Recency { get; set; }
         public int Frequency { get; set; }
         public decimal Monetary { get; set; }
