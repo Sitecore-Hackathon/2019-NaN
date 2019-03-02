@@ -142,15 +142,17 @@
     <Compile Include="Conditionals\ClusterMatch.cs" />
     <Compile Include="Conditionals\RfmMatch.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="Extentions\ContactModelMapper.cs" />
+    <Compile Include="Mappers\ContactModelMapper.cs" />
+    <Compile Include="Extentions\LinqExtensions.cs" />
     <Compile Include="Facets\RfmContactFacet.cs" />
-    <Compile Include="Models\ClientEvent.cs" />
+    <Compile Include="Mappers\ClientMapper.cs" />
+    <Compile Include="Models\Clients\ClientEvent.cs" />
     <Compile Include="Models\Cortex\ContactProjectionModel.cs" />
     <Compile Include="Models\Cortex\GoalsProjectionModel.cs" />
     <Compile Include="Models\Cortex\PredictionResult.cs" />
     <Compile Include="Models\Cortex\RfmStatistics.cs" />
-    <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\CustomerBusinessValue.cs" />
+    <Compile Include="Models\Clients\Client.cs" />
+    <Compile Include="Models\Clients\CustomerBusinessValue.cs" />
     <Compile Include="Models\Events\DemoGoal.cs" />
     <Compile Include="Models\Events\EventType.cs" />
     <Compile Include="Models\Xdb\XdbContactModel.cs" />
@@ -165,6 +167,9 @@
     <Compile Include="Workers\RfmTrainingWorkerOptionsDictionary.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Sitecore.ContentTesting.ML">
+      <HintPath>..\..\..\..\lib\Sitecore.ContentTesting.ML.dll</HintPath>
+    </Reference>
     <Reference Include="Sitecore.Processing.Common">
       <HintPath>..\..\..\..\lib\Sitecore.Processing.Common.dll</HintPath>
     </Reference>
