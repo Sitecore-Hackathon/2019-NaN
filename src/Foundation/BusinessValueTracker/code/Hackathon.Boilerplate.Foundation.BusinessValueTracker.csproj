@@ -133,6 +133,8 @@
     <Content Include="App_Config\Include\Foundation\Foundation.BusinessValueTracker.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conditionals\ClusterMatch.cs" />
+    <Compile Include="Conditionals\RfmMatch.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Extentions\ContactModelMapper.cs" />
     <Compile Include="Facets\RfmContactFacet.cs" />
@@ -195,7 +197,11 @@
       <HintPath>..\..\..\..\lib\Sitecore.Processing.Tasks.Options.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <PackageReference Include="Sitecore.XConnect.Segmentation.Predicates">
+      <Version>9.1.0</Version>
+    </PackageReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
