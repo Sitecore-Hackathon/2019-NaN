@@ -163,7 +163,10 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Sitecore.Processing.Common">
-      <HintPath>..\..\..\..\..\..\hackathon-2019\src\Foundation\ProcessingEngine\code\libs\Sitecore.Processing.Common.dll</HintPath>
+      <HintPath>..\..\..\..\lib\Sitecore.Processing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Processing.Cursors.Abstractions">
+      <HintPath>..\..\..\..\lib\Sitecore.Processing.Cursors.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Processing.Engine">
       <HintPath>..\..\..\..\lib\Sitecore.Processing.Engine.dll</HintPath>
@@ -181,13 +184,13 @@
       <HintPath>..\..\..\..\lib\Sitecore.Processing.Engine.Projection.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Processing.Engine.Scripting">
-      <HintPath>..\..\..\..\..\..\hackathon-2019\src\Foundation\ProcessingEngine\code\libs\Sitecore.Processing.Engine.Scripting.dll</HintPath>
+      <HintPath>..\..\..\..\lib\Sitecore.Processing.Engine.Scripting.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Processing.Engine.Scripting.Abstractions">
-      <HintPath>..\..\..\..\..\..\hackathon-2019\src\Foundation\ProcessingEngine\code\libs\Sitecore.Processing.Engine.Scripting.Abstractions.dll</HintPath>
+      <HintPath>..\..\..\..\lib\Sitecore.Processing.Engine.Scripting.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Processing.Engine.Scripting.Mrs">
-      <HintPath>..\..\..\..\..\..\hackathon-2019\src\Foundation\ProcessingEngine\code\libs\Sitecore.Processing.Engine.Scripting.Mrs.dll</HintPath>
+      <HintPath>..\..\..\..\lib\Sitecore.Processing.Engine.Scripting.Mrs.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Processing.Engine.Storage">
       <HintPath>..\..\..\..\lib\Sitecore.Processing.Engine.Storage.dll</HintPath>
@@ -203,6 +206,27 @@
     <Reference Include="Sitecore.Processing.Tasks.Options, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\lib\Sitecore.Processing.Tasks.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Tracking">
+      <HintPath>..\..\..\..\lib\Sitecore.Tracking.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Tracking.Core">
+      <HintPath>..\..\..\..\lib\Sitecore.Tracking.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Tracking.Plugin.Status">
+      <HintPath>..\..\..\..\lib\Sitecore.Tracking.Plugin.Status.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Tracking.Processing.Abstractions">
+      <HintPath>..\..\..\..\lib\Sitecore.Tracking.Processing.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Tracking.Processing.ChannelManagement">
+      <HintPath>..\..\..\..\lib\Sitecore.Tracking.Processing.ChannelManagement.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Tracking.Processing.Engine">
+      <HintPath>..\..\..\..\lib\Sitecore.Tracking.Processing.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Tracking.SqlServer">
+      <HintPath>..\..\..\..\lib\Sitecore.Tracking.SqlServer.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

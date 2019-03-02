@@ -1,0 +1,1 @@
+﻿dotnet Hackathon.Boilerplate.Project.ConsoleGenerator.dll -g -n 10

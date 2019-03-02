@@ -6,16 +6,14 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
-using Sitecore.UniversalTrackerClient.UserRequest;
 
 namespace Hackathon.Boilerplate.Project.ConsoleGenerator
 {
     class InteractionService
     {
 
-        public string instanceUrl { get; set; } = "http://my.site.com1";
+        public string instanceUrl { get; set; }
 
         internal async Task ImportFromFileAsync(string file)
         {
@@ -48,16 +46,11 @@ namespace Hackathon.Boilerplate.Project.ConsoleGenerator
                                                            .ChannelId(channelId)
                                                            .Initiator(InteractionInitiator.Brand)
                                                            .Contact(IdentificationSource, "112233");
-                //foreach (var e in events)
-                //{
-                //    defaultInteractionQuery.AddEvents(e);
-                //}
 
                 var defaultInteraction = defaultInteractionQuery.Build();
                 using (var session = SitecoreUTSessionBuilder.SessionWithHost(instanceUrl)
                                                         .DefaultInteraction(defaultInteraction)
-                                                        .BuildSession()
-                        )
+                                                        .BuildSession())
                 {
                     foreach (var e in events)
                     {
@@ -92,6 +85,48 @@ namespace Hackathon.Boilerplate.Project.ConsoleGenerator
                 interactions.Add(intr);
             }
 
+            await PushInteractiosToUT(interactions);
+        }
+
+        internal async Task GenerateMostValuableCustomers(int customerId, int count, DateTime startDate, DateTime endDate)
+        {
+            var interactions = new List<Interaction>();
+            var rand = new Random();
+            var current = startDate;
+            while (current <= endDate)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    var intr = new Interaction()
+                    {
+                        CustomerId = customerId,
+                        GoalValue = rand.Next(0, 20),
+                        GoalId = ((GoalType)rand.Next(0, Enum.GetNames(typeof(GoalType)).Length)).ToString(),
+                        Timestamp = current.AddHours(rand.Next(-5, 5)),
+                    };
+                    interactions.Add(intr);
+                }
+                current = current.AddMonths(1);
+            }
+            await PushInteractiosToUT(interactions);
+        }
+
+        internal async Task GenerateLeastValuableCustomers(int customerId, DateTime startDate, DateTime endDate)
+        {
+            var interactions = new List<Interaction>();
+            var rand = new Random();
+
+            var halfOfRange = ((endDate - startDate) / 2);
+            var current = startDate.Add(halfOfRange);
+
+            var intr = new Interaction()
+            {
+                CustomerId = customerId,
+                GoalValue = rand.Next(0, 20),
+                GoalId = ((GoalType)rand.Next(0, Enum.GetNames(typeof(GoalType)).Length)).ToString(),
+                Timestamp = current.AddHours(rand.Next((int)-halfOfRange.TotalHours, (int)halfOfRange.TotalHours)),
+            };
+            interactions.Add(intr);
             await PushInteractiosToUT(interactions);
         }
 

@@ -1,5 +1,7 @@
 # Documentation
 
+We tried to combine incredible things - tracking users in different places, analyzing data using algorithms from marketing and creating tips on how best to engage the user. We could go further if there was a category with Cortex :) What we love about hackathons is that we can experiment!
+
 ## Summary
 
 ### Category:
@@ -16,7 +18,8 @@ The algorithm of grouping users is based on the adapted RFM analysis borrowed fr
 
 ![rfm](https://github.com/Sitecore-Hackathon/2019-NaN/blob/master/documentation/images/rfm.jpg)
 
-Unlike the original RFM analysis we will use Goal Value instead of the price. The most business valuable group has the maximum RFM coefficient, users who use the service a little or are going to leave – the minimum. In the future after segmentation, we can send to users personalized offers, display personalized advertising for greater involvement and sales.
+Unlike the original RFM analysis we use Goal Value instead of the price. The most business valuable group has the maximum RFM coefficient, users who use the service a little or are going to leave – the minimum. In the future after segmentation, we can send to users personalized offers, display personalized advertising for greater involvement and sales.
+
 
 Read more: https://en.wikipedia.org/wiki/RFM_(customer_value)
 
@@ -28,7 +31,7 @@ Using the Universal Tracker, we collect the values of the event from various res
 
 ## Pre-requisites
 
-Module has no dependencies on other specific modules. Since we implement our module in the category "Best use of xConnect and/or Universal Tracker" for correct work, you will need the following instances:
+Module has no dependencies on other specific modules. Since we implement our module in the category "Best use of xConnect and/or Universal Tracker" for correct work, you need the following instances:
 
 - xConnect
 - Universal tracker
@@ -44,6 +47,37 @@ Perform the following steps to install the module:
 
 
 ## Usage
+
+
+Console utilite to generate interactions.
+Paramters:
+
+-h, --host \<url> - url to UT collection service. Default value: http://sitecore.tracking.collection.service/
+    
+-i, --import \<path> - generate interactions from provided csv file. Default value: interactions.csv
+    
+-g - provide this paramter to generate interactions from parameters
+
+-n, --number \<int> - count of interactions to generate. Default value: 10
+    
+-c, --customerid \<int> - customerid to generate interactions for. If not provided generate a random id.
+    
+-s, --startdate \<date> - start date of time range. Used with --max and --min paramters. Default value: 12/1/2017
+    
+-e, --enddate \<date> - end date of time randge. Used with --max and --min paramters. Default value: 12/9/2018
+    
+--max - generate most valuable user with 10(default) interactions per month in time range. Parameters -n override count of interaction per month. -c can be provided
+
+--min - generate least valuable user with 1 interaction during all time range. 
+
+Examples:
+
+`dotnet Hackathon.Boilerplate.Project.ConsoleGenerator.dll -g --max -n 20 -h "https://mysc.tracking.collection.service` - generate most valuable user with 20 interactions each month.
+
+`dotnet Hackathon.Boilerplate.Project.ConsoleGenerator.dll -g -n 10 -c 1234` - generate 10 interactions for user 1234
+
+`dotnet Hackathon.Boilerplate.Project.ConsoleGenerator.dll --import interactions.csv` - generate interactions from csv file "interactions.csv"
+    
 
 
 ## Video
