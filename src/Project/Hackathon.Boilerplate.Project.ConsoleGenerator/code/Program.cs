@@ -25,8 +25,8 @@ namespace Hackathon.Boilerplate.Project.ConsoleGenerator
                 
                 if (x.IsGenerateMode)
                 {
-                    if (x.CustomerId == 0)
-                        x.CustomerId = rand.Next(0, 1000); 
+                    if (string.IsNullOrWhiteSpace(x.CustomerId ))
+                        x.CustomerId = "brimit_NaN_" + Guid.NewGuid() + "@example.com"; 
                     if (x.GenerateMostValuable)
                     {
                         Console.WriteLine($"Generating interactions for {x.CustomerId} in the range {start} - {end}");
@@ -68,7 +68,7 @@ namespace Hackathon.Boilerplate.Project.ConsoleGenerator
         [Option('n', "number", HelpText = "Number of interactions to generate", Default = 1000)]
         public int InteractionNumber { get; set; }
         [Option('c', "customerid", HelpText = "Customer id to generate interactions")]
-        public int CustomerId { get; set; }
+        public string CustomerId { get; set; }
         [Option('s', "startdate", HelpText ="Start date of date range")]
         public DateTime StartDate { get; set; }
         [Option('e', "enddate", HelpText ="End date of date range")]
