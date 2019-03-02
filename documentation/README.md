@@ -1,5 +1,7 @@
 # Documentation
 
+We tried to combine incredible things - tracking users in different places, analyzing data using algorithms from marketing and creating tips on how best to engage the user. We could go further if there was a category with Cortex :) What we love about hackathons is that we can experiment!
+
 ## Summary
 
 ### Category:
