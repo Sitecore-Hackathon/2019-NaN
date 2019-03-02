@@ -54,7 +54,7 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Processors
                 typeof(GoalsProjectionModel).AssemblyQualifiedName, TimeSpan.MaxValue, "PurchaseOutcome",
                 modelOptions);
 
-            Log.Info("Cortex RegisterProjectionWorkerTask SchemaName=" + dictionary.SchemaName, this);
+            Log.Info("TaskAgent RegisterProjectionWorkerTask SchemaName=" + dictionary.SchemaName, this);
 
 
             Guid taskId = await taskManager.RegisterDistributedTaskAsync(
@@ -63,7 +63,7 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Processors
                 null,
                 new TimeSpan(0, 10, 0)).ConfigureAwait(false);
 
-            Log.Info("Cortex RegisterProjectionWorkerTask taskId=" + taskId, this);
+            Log.Info("TaskAgent RegisterProjectionWorkerTask taskId=" + taskId, this);
 
             List<Task<Guid>> mergeTasks = new List<Task<Guid>>();
 
@@ -85,7 +85,7 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Processors
                 new TimeSpan(0, 10, 0)).ConfigureAwait(false);
 
 
-            Log.Info("Cortex TrainingWorkerOptionsDictionary taskId=" + t, this);
+            Log.Info("TaskAgent TrainingWorkerOptionsDictionary taskId=" + t, this);
         }
 
         public async Task RegisterMergingWorkerTask()
@@ -97,7 +97,7 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Processors
                     null,
                     new TimeSpan(0, 5, 0))
                 .ConfigureAwait(false);
-            Sitecore.Diagnostics.Log.Info("Cortex RegisterMergingWorkerTask taskId=" + taskId, this);
+            Sitecore.Diagnostics.Log.Info("TaskAgent RegisterMergingWorkerTask taskId=" + taskId, this);
         }
 
         public async Task RegisterTrainingWorkerTask()
@@ -109,7 +109,7 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Processors
                     null,
                     new TimeSpan(0, 10, 0))
                 .ConfigureAwait(false);
-            Sitecore.Diagnostics.Log.Info("Cortex RegisterTrainingWorkerTask taskId=" + taskId, this);
+            Sitecore.Diagnostics.Log.Info("TaskAgent RegisterTrainingWorkerTask taskId=" + taskId, this);
         }
 
      
