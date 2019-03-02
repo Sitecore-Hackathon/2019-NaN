@@ -125,7 +125,7 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Workers
 
                                 xdbContext.SetFacet(contact, RfmContactFacet.DefaultFacetKey, rfmFacet);
 
-                                _logger.LogInformation($"RFM info: customer={identifier}, R={rfmFacet.R}, F={rfmFacet.F}, M={rfmFacet.M}, Recency={rfmFacet.Recency}, Frequency={rfmFacet.Frequency}, Monetary={rfmFacet.Monetary}, CLUSTER={rfmFacet.Cluster}");
+                                _logger.LogInformation($"RFM info: customer={identifier}, R={rfmFacet.R}, F={rfmFacet.F}, M={rfmFacet.M}, Recency={rfmFacet.Recency}, Frequency={rfmFacet.Frequency}, Monetary={rfmFacet.Monetary}");
 
                             }
 

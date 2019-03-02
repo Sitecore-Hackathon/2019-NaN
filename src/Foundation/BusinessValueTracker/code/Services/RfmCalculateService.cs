@@ -45,7 +45,7 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Services
 
             // Calculate 
 
-            int maxScore = 5;
+            int maxScore = 3;
 
             var rList = list.OrderByDescending(x => x.Recency).ToList().Partition(maxScore);
             int rValue = maxScore;
