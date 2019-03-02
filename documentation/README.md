@@ -48,17 +48,19 @@ Perform the following steps to install the module:
 
 First of all, you need an installed instance of Sitecore 9.1 and Universal tracker. 
 
-Unpack the archive [a link](https://github.com/Sitecore-Hackathon/2019-NaN/install/Demo.zip) to any folder and run the "InitialImport.ps1" script from Power Shell to import the demo data if your Collection host of Universal Tracker has a name 'http://sitecore.tracking.collection.service/'. You can edit the Power Shell script by adding the "-h " parameter http://url". The demo data contains user generated events for Universal Tracker.
 
 ### Step 1:
-Install this package
+Install the sitecore package [BusinessValueTracker.zip](https://github.com/Sitecore-Hackathon/2019-NaN/install/BusinessValueTracker.zip)
 
-### Step 2:
-
-
+### Step 2: 
+Unpack the archive [Demo.zip](https://github.com/Sitecore-Hackathon/2019-NaN/install/Demo.zip) to any folder and run the "InitialImport.ps1" script from Power Shell to import the demo data if your Collection host of Universal Tracker has a name 'http://sitecore.tracking.collection.service/'. You can edit the Power Shell script by adding the "-h " parameter with your own url. The demo data contains user generated events for Universal Tracker service.
 
 ## Usage
 
+To see how the module works, you can use Power Shell scripts:
+
+- To simulate the most important business customers use the script GenerateMostValuableUser.ps1
+- To simulate the least valuable business customers customers use the script GenerateLeastValuableUser.ps1
 
 Console utilite to generate interactions.
 Paramters:
@@ -83,11 +85,11 @@ Paramters:
 
 Examples:
 
-`dotnet Hackathon.Boilerplate.Project.ConsoleGenerator.dll -g --max -n 20 -h "https://mysc.tracking.collection.service` - generate most valuable user with 20 interactions each month.
+`dotnet Hackathon.Boilerplate.Project.ConsoleGenerator.dll -g --max -n 20 -h "https://mysc.tracking.collection.service` - generates most valuable user with 20 interactions each month.
 
-`dotnet Hackathon.Boilerplate.Project.ConsoleGenerator.dll -g -n 10 -c 1234` - generate 10 interactions for user 1234
+`dotnet Hackathon.Boilerplate.Project.ConsoleGenerator.dll -g -n 10 -c 1234` - generates 10 interactions for user 1234
 
-`dotnet Hackathon.Boilerplate.Project.ConsoleGenerator.dll --import interactions.csv` - generate interactions from csv file "interactions.csv"
+`dotnet Hackathon.Boilerplate.Project.ConsoleGenerator.dll --import interactions.csv` - generates interactions from csv file "interactions.csv"
     
 
 
