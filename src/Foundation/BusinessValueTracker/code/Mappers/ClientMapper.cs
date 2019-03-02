@@ -16,18 +16,18 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Mappers
                 invoices.Add(data.ToGoalOutcome());
             }
 
-            var groupedData = invoices.AsEnumerable().GroupBy(x => x.ContactId);
+            var groupedData = invoices.AsEnumerable().GroupBy(x => x.Email);
 
-            return groupedData.Select(data => new Client { ClientId = data.Key, ClientEvents = data.ToList() }).ToList();
+            return groupedData.Select(data => new Client { Email = data.Key, ClientEvents = data.ToList() }).ToList();
         }
 
         public static ClientEvent ToGoalOutcome(this IDataRow dataRow)
         {
             var result = new ClientEvent();
-            var customerId = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == Constants.DemoGoal.CustomerIdKey);
-            if (customerId != null)
+            var email = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == Constants.DemoGoal.CustomerIdKey);
+            if (email != null)
             {
-                result.ContactId = int.Parse(dataRow.GetString(dataRow.Schema.GetFieldIndex(Constants.DemoGoal.CustomerIdKey)));
+                result.Email = dataRow.GetString(dataRow.Schema.GetFieldIndex(Constants.DemoGoal.CustomerIdKey));
             }
 
             var date = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == Constants.DemoGoal.ProjectionTimestamp);

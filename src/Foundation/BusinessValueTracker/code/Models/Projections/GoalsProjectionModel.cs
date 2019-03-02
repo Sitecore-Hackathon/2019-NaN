@@ -5,7 +5,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Events;
 using Hackathon.Boilerplate.Foundation.BusinessValueTracker.Services;
-using Microsoft.Extensions.Logging;
 using Sitecore.Processing.Engine.ML.Abstractions;
 using Sitecore.Processing.Engine.Projection;
 using Sitecore.XConnect;
@@ -15,14 +14,11 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Projectio
     public class GoalsProjectionModel : IModel<Interaction>
     {
         private readonly IBusinessScoreService _businessScoreService;
-        private readonly ILogger<GoalsProjectionModel> _logger;
 
-        public GoalsProjectionModel(IReadOnlyDictionary<string, string> options, IBusinessScoreService businessScoreService, ILogger<GoalsProjectionModel> logger)
+        public GoalsProjectionModel(IReadOnlyDictionary<string, string> options, IBusinessScoreService businessScoreService)
         {
-            _logger = logger;
             _businessScoreService = businessScoreService;
 
-       
             Projection = Sitecore.Processing.Engine.Projection.Projection.Of<Interaction>()
                 .CreateTabular(Constants.DemoGoal.ProjectionTableName,
                     interaction => interaction.Events.OfType<Goal>().Where(x => x.DefinitionId == DemoGoal.DemoGoalDefinitionId),
@@ -42,7 +38,7 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Projectio
 
         public Task<IReadOnlyList<object>> EvaluateAsync(string schemaName, CancellationToken cancellationToken, params TableDefinition[] tables)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException("advertising space :) follow me in twitter @x3mxray");
         }
 
         public IProjection<Interaction> Projection { get; }

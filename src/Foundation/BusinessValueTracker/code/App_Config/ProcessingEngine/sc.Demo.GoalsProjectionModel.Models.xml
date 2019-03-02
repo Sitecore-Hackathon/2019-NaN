@@ -3,7 +3,7 @@
     <Processing>
       <Services>
         <PurchaseInteractionModel>
-          <Type>Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Cortex.GoalsProjectionModel, Hackathon.Boilerplate.Foundation.BusinessValueTracker</Type>
+          <Type>Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Projections.GoalsProjectionModel, Hackathon.Boilerplate.Foundation.BusinessValueTracker</Type>
         </PurchaseInteractionModel>
       </Services>
     </Processing>

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Hackathon.Boilerplate.Foundation.BusinessValueTracker.Facets;
 using Sitecore.Processing.Engine.Projection;
 

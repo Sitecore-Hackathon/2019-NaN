@@ -10,7 +10,7 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models
             ClientEvents = new List<ClientEvent>();
         }
 
-        public int ClientId { get; set; }
+        public string Email { get; set; }
         public IList<ClientEvent> ClientEvents { get; set; }
     }
 }

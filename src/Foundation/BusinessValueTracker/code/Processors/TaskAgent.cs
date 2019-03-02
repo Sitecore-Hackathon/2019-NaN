@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Hackathon.Boilerplate.Foundation.BusinessValueTracker.Facets;
-using Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Events;
-using Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Projections;
+﻿using Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Projections;
 using Hackathon.Boilerplate.Foundation.BusinessValueTracker.Workers;
 using Microsoft.Extensions.DependencyInjection;
 using Sitecore.DependencyInjection;
@@ -16,6 +10,10 @@ using Sitecore.Processing.Tasks.Options.DataSources.DataExtraction;
 using Sitecore.Processing.Tasks.Options.Workers.ML;
 using Sitecore.XConnect;
 using Sitecore.XConnect.Collection.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Processors
 {
@@ -44,75 +42,6 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Processors
             }
 
         }
-
-        public async Task RegisterProjectionWorkerTask()
-        {
-            var taskManager = ServiceLocator.ServiceProvider.GetService<ITaskManager>();
-
-            var modelOptions = new Dictionary<string, string> { ["TestCaseId"] = "Id" };
-            var dictionary = new InteractionProjectionWorkerOptionsDictionary(
-                typeof(GoalsProjectionModel).AssemblyQualifiedName, TimeSpan.MaxValue, "PurchaseOutcome",
-                modelOptions);
-
-            Log.Info("Cortex RegisterProjectionWorkerTask SchemaName=" + dictionary.SchemaName, this);
-
-
-            Guid taskId = await taskManager.RegisterDistributedTaskAsync(
-                new InteractionDataSourceOptionsDictionary(new InteractionExpandOptions(), 5, 10),
-                dictionary,
-                null,
-                new TimeSpan(0, 10, 0)).ConfigureAwait(false);
-
-            Log.Info("Cortex RegisterProjectionWorkerTask taskId=" + taskId, this);
-
-            List<Task<Guid>> mergeTasks = new List<Task<Guid>>();
-
-            MergeWorkerOptionsDictionary optionsDictionary1 = new MergeWorkerOptionsDictionary("PurchaseOutcome", "xxx_", TimeSpan.FromHours(2), dictionary.SchemaName);
-            MergeWorkerOptionsDictionary optionsDictionary2 = optionsDictionary1;
-            Guid[] guidArray = new Guid[1] { taskId };
-            await taskManager.RegisterDeferredTaskAsync(optionsDictionary2, guidArray, new TimeSpan(0, 10, 0))
-                .ConfigureAwait(false);
-
-            var t = await taskManager.RegisterDeferredTaskAsync(
-                new TrainingWorkerOptionsDictionary(
-                    typeof(Interaction).AssemblyQualifiedName,
-                    typeof(GoalsProjectionModel).AssemblyQualifiedName,
-                    dictionary.SchemaName,
-                    new List<string> { "PurchaseOutcome" },
-                    modelOptions),
-
-                new Guid[1] { taskId },
-                new TimeSpan(0, 10, 0)).ConfigureAwait(false);
-
-
-            Log.Info("Cortex TrainingWorkerOptionsDictionary taskId=" + t, this);
-        }
-
-        public async Task RegisterMergingWorkerTask()
-        {
-            var taskManager = ServiceLocator.ServiceProvider.GetService<ITaskManager>();
-
-            Guid taskId = await taskManager.RegisterDeferredTaskAsync(
-                    new MergeWorkerOptionsDictionary(nameof(DemoGoal), "sctest_", TimeSpan.FromHours(2), "MergingWorkerSchema"),
-                    null,
-                    new TimeSpan(0, 5, 0))
-                .ConfigureAwait(false);
-            Sitecore.Diagnostics.Log.Info("Cortex RegisterMergingWorkerTask taskId=" + taskId, this);
-        }
-
-        public async Task RegisterTrainingWorkerTask()
-        {
-            var taskManager = ServiceLocator.ServiceProvider.GetService<ITaskManager>();
-
-            Guid taskId = await taskManager.RegisterDeferredTaskAsync(
-                    new InteractionTrainingWorkerOptionsDictionary(typeof(DemoGoal).AssemblyQualifiedName, "ProjectionWorkerSchema", new List<string> { nameof(DemoGoal) }, new Dictionary<string, string> { ["TestCaseId"] = "Id2" }),
-                    null,
-                    new TimeSpan(0, 10, 0))
-                .ConfigureAwait(false);
-            Sitecore.Diagnostics.Log.Info("Cortex RegisterTrainingWorkerTask taskId=" + taskId, this);
-        }
-
-     
     }
 
     public static class TaskManagerExtensionsCustom
@@ -139,17 +68,17 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Processors
                 modelTrainingOptions.ModelOptions);
 
             Guid guid = await taskManager.RegisterDistributedTaskAsync(dataSourceOptions, projectionDictionary, prerequisiteTaskIds, expiresAfter).ConfigureAwait(false);
-            List<Task<Guid>> mergeTasks = new List<Task<Guid>>();
+            var mergeTasks = new List<Task<Guid>>();
             foreach (var targetTableNames in modelTrainingOptions.SourceTargetTableNamesMap)
             {
                 var optionsDictionary1 = new MergeWorkerOptionsDictionary(targetTableNames.Value, targetTableNames.Key, expiresAfter, modelTrainingOptions.SchemaName);
                 ITaskManager taskManager1 = taskManager;
                 var optionsDictionary2 = optionsDictionary1;
-                Guid[] guidArray = new Guid[1] { guid };
+                Guid[] guidArray = { guid };
                 TimeSpan expiresAfter1 = expiresAfter;
                 mergeTasks.Add(taskManager1.RegisterDeferredTaskAsync(optionsDictionary2, guidArray, expiresAfter1));
             }
-            Guid[] guidArray1 = await Task.WhenAll(mergeTasks).ConfigureAwait(false);
+            await Task.WhenAll(mergeTasks).ConfigureAwait(false);
             var trainTaskId = await taskManager.RegisterDeferredTaskAsync(new RfmTrainingWorkerOptionsDictionary(modelTrainingOptions.ModelEntityTypeString, modelTrainingOptions.ModelTypeString, modelTrainingOptions.SchemaName, modelTrainingOptions.SourceTargetTableNamesMap.Values.ToList(), modelTrainingOptions.ModelOptions), mergeTasks.Select(t => t.Result), expiresAfter).ConfigureAwait(false);
             return trainTaskId;
         }

@@ -1,0 +1,51 @@
+{
+  "Name": "ContactModel",
+  "Version": "1.0",
+  "References": [
+    {
+      "Name": "XConnect",
+      "Version": "1.0"
+    },
+    {
+      "Name": "Sitecore.XConnect.Collection.Model",
+      "Version": "9.0"
+    }
+  ],
+  "Types": {
+    "Hackathon.Boilerplate.Foundation.BusinessValueTracker.Facets.RfmContactFacet": {
+      "Type": "Facet",
+      "BaseType": "Sitecore.XConnect.Facet",
+      "ClrType": "Hackathon.Boilerplate.Foundation.BusinessValueTracker.Facets.RfmContactFacet, Hackathon.Boilerplate.Foundation.BusinessValueTracker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "R": {
+          "Type": "Int32"
+        },
+        "F": {
+          "Type": "Int32"
+        },
+        "M": {
+          "Type": "Int32"
+        },
+        "Recency": {
+          "Type": "Double"
+        },
+        "Frequency": {
+          "Type": "Int32"
+        },
+        "Monetary": {
+          "Type": "Double"
+        },
+        "Cluster": {
+          "Type": "Int32"
+        }
+      }
+    }
+  },
+  "Facets": [
+    {
+      "Target": "Contact",
+      "Name": "RfmContactFacet",
+      "Type": "Hackathon.Boilerplate.Foundation.BusinessValueTracker.Facets.RfmContactFacet"
+    }
+  ]
+}

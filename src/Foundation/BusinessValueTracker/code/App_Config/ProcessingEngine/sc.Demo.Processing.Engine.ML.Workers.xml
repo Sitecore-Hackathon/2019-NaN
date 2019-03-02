@@ -7,9 +7,6 @@
 			<RfmInteractionTrainingWorker>
               <Type>Hackathon.Boilerplate.Foundation.BusinessValueTracker.Workers.RfmTrainingWorker, Hackathon.Boilerplate.Foundation.BusinessValueTracker</Type>
             </RfmInteractionTrainingWorker>
-            <RfmEvaluationWorker>
-              <Type>Hackathon.Boilerplate.Foundation.BusinessValueTracker.Workers.RfmEvaluationWorker, Hackathon.Boilerplate.Foundation.BusinessValueTracker</Type>
-            </RfmEvaluationWorker>
           </Options>
         </TaskServicesFactory>
       </Services>
