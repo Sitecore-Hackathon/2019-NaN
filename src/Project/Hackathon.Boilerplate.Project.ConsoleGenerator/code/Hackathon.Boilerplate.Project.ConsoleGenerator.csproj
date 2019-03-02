@@ -6,10 +6,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Generate10InteractionsForUser.ps1" />
+    <None Remove="Generate10InteractionsForUser1234.ps1" />
+    <None Remove="GenerateLeastValuebleUser.ps1" />
+    <None Remove="GenerateMostValuebleUser.ps1" />
+    <None Remove="InitialImport.ps1" />
     <None Remove="interactions.csv" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Generate10InteractionsForUser1234.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GenerateLeastValuebleUser.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Generate10InteractionsForUser.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GenerateMostValuebleUser.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="InitialImport.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="interactions.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
