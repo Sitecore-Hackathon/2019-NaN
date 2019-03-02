@@ -24,22 +24,22 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Mappers
         public static ClientEvent ToPurchaseOutcome(this IDataRow dataRow)
         {
             var result = new ClientEvent();
-            var customerId = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == nameof(Constants.DemoGoal.CustomerIdKey));
+            var customerId = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == Constants.DemoGoal.CustomerIdKey);
             if (customerId != null)
             {
-                result.ContactId = (int)dataRow.GetInt64(dataRow.Schema.GetFieldIndex(nameof(Constants.DemoGoal.CustomerIdKey)));
+                result.ContactId = int.Parse(dataRow.GetString(dataRow.Schema.GetFieldIndex(Constants.DemoGoal.CustomerIdKey)));
             }
 
-            var date = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == nameof(Constants.DemoGoal.ProjectionTimestamp));
+            var date = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == Constants.DemoGoal.ProjectionTimestamp);
             if (date != null)
             {
-                result.TimeStamp = dataRow.GetDateTime(dataRow.Schema.GetFieldIndex(nameof(Constants.DemoGoal.ProjectionTimestamp)));
+                result.TimeStamp = dataRow.GetDateTime(dataRow.Schema.GetFieldIndex(Constants.DemoGoal.ProjectionTimestamp));
             }
 
-            var price = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == nameof(Constants.DemoGoal.ProjectionEngagementValue));
+            var price = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == Constants.DemoGoal.ProjectionEngagementValue);
             if (price != null)
             {
-                result.Value = (decimal)dataRow.GetDouble(dataRow.Schema.GetFieldIndex(nameof(Constants.DemoGoal.ProjectionEngagementValue)));
+                result.Value = (decimal)dataRow.GetDouble(dataRow.Schema.GetFieldIndex(Constants.DemoGoal.ProjectionEngagementValue));
             }
 
             return result;

@@ -208,30 +208,30 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Processors
             }
             Guid[] guidArray1 = await Task.WhenAll(mergeTasks).ConfigureAwait(false);
             var trainTaskId = await taskManager.RegisterDeferredTaskAsync(new RfmTrainingWorkerOptionsDictionary(modelTrainingOptions.ModelEntityTypeString, modelTrainingOptions.ModelTypeString, modelTrainingOptions.SchemaName, modelTrainingOptions.SourceTargetTableNamesMap.Values.ToList(), modelTrainingOptions.ModelOptions), mergeTasks.Select(t => t.Result), expiresAfter).ConfigureAwait(false);
+            return trainTaskId;
+            //var dataSourceOptions2 = new ContactDataSourceOptionsDictionary(new ContactExpandOptions(PersonalInformation.DefaultFacetKey,
+            //        EmailAddressList.DefaultFacetKey,
+            //        ContactBehaviorProfile.DefaultFacetKey,
+            //        RfmContactFacet.DefaultFacetKey)
+            //    , 5, 10);
 
-            var dataSourceOptions2 = new ContactDataSourceOptionsDictionary(new ContactExpandOptions(PersonalInformation.DefaultFacetKey,
-                    EmailAddressList.DefaultFacetKey,
-                    ContactBehaviorProfile.DefaultFacetKey,
-                    RfmContactFacet.DefaultFacetKey)
-                , 5, 10);
-
-            var modelTrainingOptions2 =
-                new ModelTrainingTaskOptions(typeof(ContactProjectionModel).AssemblyQualifiedName, typeof(Contact).AssemblyQualifiedName, new Dictionary<string, string> { ["TestCaseId"] = "Id" }, Constants.DemoGoal.ProjectionContactTableName, Constants.DemoGoal
-                    .ProjectionContactResultTableName);
-
-
-            var evaluationDictionary = new EvaluationWorkerOptionsDictionary(
-                "Hackathon.Boilerplate.Foundation.BusinessValueTracker.RfmEvaluationWorker, Hackathon.Boilerplate.Foundation.BusinessValueTracker",
-                modelTrainingOptions2.ModelTypeString, modelTrainingOptions2.ModelOptions,
-                "Evaluator.Schema", TimeSpan.FromDays(1));
+            //var modelTrainingOptions2 =
+            //    new ModelTrainingTaskOptions(typeof(ContactProjectionModel).AssemblyQualifiedName, typeof(Contact).AssemblyQualifiedName, new Dictionary<string, string> { ["TestCaseId"] = "Id" }, Constants.DemoGoal.ProjectionContactTableName, Constants.DemoGoal
+            //        .ProjectionContactResultTableName);
 
 
-            return await taskManager.RegisterDistributedTaskAsync(
-                    dataSourceOptions2,
-                    evaluationDictionary,
-                    new[] { trainTaskId },
-                    expiresAfter)
-                .ConfigureAwait(false);
+            //var evaluationDictionary = new EvaluationWorkerOptionsDictionary(
+            //    "Hackathon.Boilerplate.Foundation.BusinessValueTracker.RfmEvaluationWorker, Hackathon.Boilerplate.Foundation.BusinessValueTracker",
+            //    modelTrainingOptions2.ModelTypeString, modelTrainingOptions2.ModelOptions,
+            //    "Evaluator.Schema", TimeSpan.FromDays(1));
+
+
+            //return await taskManager.RegisterDistributedTaskAsync(
+            //        dataSourceOptions2,
+            //        evaluationDictionary,
+            //        new[] { trainTaskId },
+            //        expiresAfter)
+            //    .ConfigureAwait(false);
 
 
         }
