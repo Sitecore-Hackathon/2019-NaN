@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Hackathon.Boilerplate.Foundation.BusinessValueTracker.Facets;
-using Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Cortex;
 using Sitecore.Processing.Engine.Projection;
 
 namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Mappers
 {
-    public static class ContactModelMapper
+    public static class ContactMapper
     {
         public static bool Enabled(this IDataRow dataRow)
         {
@@ -17,16 +16,7 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Mappers
             }
             return false;
         }
-        public static string GetContactEmail(this IDataRow dataRow)
-        {
-            var email = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == "Email");
-            if (email != null)
-            {
-                return dataRow.GetString(dataRow.Schema.GetFieldIndex("Email"));
-            }
 
-            return null;
-        }
         public static RfmContactFacet MapToRfmFacet(this IDataRow dataRow)
         {
             var result = new RfmContactFacet();
@@ -63,20 +53,6 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Mappers
                 result.Monetary = dataRow.GetDouble(dataRow.Schema.GetFieldIndex("Monetary"));
             }
             return result;
-        }
-
-        public static List<PredictionResult> ToPredictionResults(this IReadOnlyList<object> evaluationResults)
-        {
-            var results = new List<PredictionResult>();
-            foreach (var result in evaluationResults)
-            {
-                if (result is PredictionResult)
-                {
-                    results.Add(result as PredictionResult);
-                }
-            }
-
-            return results;
         }
     }
 }

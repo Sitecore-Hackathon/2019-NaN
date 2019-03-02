@@ -33,15 +33,13 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Workers
             _serviceProvider = serviceProvider;
         }
 
-
-        // Update Cluster for Contact
         protected override async Task ConsumeEvaluationResultsAsync(IReadOnlyList<Contact> entities, IReadOnlyList<object> evaluationResults, CancellationToken token)
         {
             var contactIdentifiers = entities
                 .SelectMany(x =>
                     x.Identifiers.Where(s => s.Source == Constants.XConnect.IdentificationSourceEmail).Select(y => y));
 
-            var predictionResults = evaluationResults.ToPredictionResults();
+           // var predictionResults = evaluationResults.ToPredictionResults();
 
             using (IServiceScope scope = _serviceProvider.CreateScope())
             {
@@ -59,7 +57,7 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Workers
                         if (contact != null)
                         {
                             var rfmFacet = contact.GetFacet<RfmContactFacet>(RfmContactFacet.DefaultFacetKey) ?? new RfmContactFacet();
-                            rfmFacet.Cluster = predictionResults.First(x => x.Email.Equals(identifier.Identifier)).Cluster;
+                          //  rfmFacet.Cluster = predictionResults.First(x => x.Email.Equals(identifier.Identifier)).Cluster;
                             xdbContext.SetFacet(contact, RfmContactFacet.DefaultFacetKey, rfmFacet);
 
                             _logger.LogInformation(string.Format("RFM info: email={0}, R={1}, F={2}, M={3}, Recency={4}, Frequency={5}, Monetary={6}, CLUSTER={7}",

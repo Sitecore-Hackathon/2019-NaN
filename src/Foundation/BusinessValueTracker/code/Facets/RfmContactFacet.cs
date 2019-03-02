@@ -9,10 +9,6 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Facets
     {
         public const string DefaultFacetKey = "RfmContactFacet";
 
-        public RfmContactFacet()
-        {
-
-        }
         public int R { get; set; }
         public int F { get; set; }
         public int M { get; set; }

@@ -29,8 +29,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{D27C83
 		documentation\images\hackathon.png = documentation\images\hackathon.png
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessValueTracker", "BusinessValueTracker", "{C364326A-2943-422A-BEDE-8A9F2B15574B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon.Boilerplate.Foundation.BusinessValueTracker", "src\Foundation\BusinessValueTracker\code\Hackathon.Boilerplate.Foundation.BusinessValueTracker.csproj", "{C405678E-EC32-4CB6-9864-ACA2C1A70491}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackathon.Boilerplate.Project.ConsoleGenerator", "src\Project\Hackathon.Boilerplate.Project.ConsoleGenerator\code\Hackathon.Boilerplate.Project.ConsoleGenerator.csproj", "{357778CB-1682-4F56-9A3D-E4148D1A227B}"
