@@ -33,6 +33,7 @@ Using the Universal Tracker, we collect the values of the event from various res
 
 Module has no dependencies on other specific modules. Since we implement our module in the category "Best use of xConnect and/or Universal Tracker" for correct work, you need the following instances:
 
+- Sitecore Experience Platform 9.1 Initial Release
 - xConnect
 - Universal tracker
 
@@ -44,6 +45,16 @@ Perform the following steps to install the module:
 - Upload demo data using the console application
 
 ## Configuration
+
+First of all, you need an installed instance of Sitecore 9.1 and Universal tracker. 
+
+Unpack the archive [a link](https://github.com/Sitecore-Hackathon/2019-NaN/install/Demo.zip) to any folder and run the "InitialImport.ps1" script from Power Shell to import the demo data if your Collection host of Universal Tracker has a name 'http://sitecore.tracking.collection.service/'. You can edit the Power Shell script by adding the "-h " parameter http://url". The demo data contains user generated events for Universal Tracker.
+
+### Step 1:
+Install this package
+
+### Step 2:
+
 
 
 ## Usage

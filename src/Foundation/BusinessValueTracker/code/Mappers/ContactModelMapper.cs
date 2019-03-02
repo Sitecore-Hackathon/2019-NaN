@@ -4,7 +4,7 @@ using Hackathon.Boilerplate.Foundation.BusinessValueTracker.Facets;
 using Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Cortex;
 using Sitecore.Processing.Engine.Projection;
 
-namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Extentions
+namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Mappers
 {
     public static class ContactModelMapper
     {

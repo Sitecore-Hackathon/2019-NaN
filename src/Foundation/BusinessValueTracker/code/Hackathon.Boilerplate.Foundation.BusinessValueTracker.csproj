@@ -144,10 +144,12 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Extentions\ContactModelMapper.cs" />
     <Compile Include="Facets\RfmContactFacet.cs" />
+    <Compile Include="Models\ClientEvent.cs" />
     <Compile Include="Models\Cortex\ContactProjectionModel.cs" />
     <Compile Include="Models\Cortex\GoalsProjectionModel.cs" />
     <Compile Include="Models\Cortex\PredictionResult.cs" />
     <Compile Include="Models\Cortex\RfmStatistics.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerBusinessValue.cs" />
     <Compile Include="Models\Events\DemoGoal.cs" />
     <Compile Include="Models\Events\EventType.cs" />
@@ -157,6 +159,7 @@
     <Compile Include="Processors\TaskAgent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\MLService.cs" />
+    <Compile Include="Services\RfmCalculateService.cs" />
     <Compile Include="Workers\RfmEvaluationWorker.cs" />
     <Compile Include="Workers\RfmTrainingWorker.cs" />
     <Compile Include="Workers\RfmTrainingWorkerOptionsDictionary.cs" />

@@ -8,6 +8,6 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Cortex
 {
     public class RfmStatistics : ModelStatistics
     {
-        //public List<Customer> Customers { get; set; }
+        public List<Client> Clients { get; set; }
     }
 }
