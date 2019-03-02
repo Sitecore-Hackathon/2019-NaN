@@ -37,6 +37,10 @@ Module has no dependencies on other specific modules. Since we implement our mod
 - xConnect
 - Universal tracker
 
+You will also need frameworks:
+- .NET Core 2.1
+- .NET Framework 4.7.1
+
 ## Installation
 
 Perform the following steps to install the module:
@@ -77,7 +81,9 @@ To see how the module works, you can use Power Shell scripts:
 
 
 
-Console utilite to generate interactions.
+
+
+### Console utilite to generate interactions.
 Paramters:
 
 -h, --host \<url> - url to UT collection service. Default value: http://sitecore.tracking.collection.service/
