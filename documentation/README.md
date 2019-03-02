@@ -20,7 +20,10 @@ Unlike the original RFM analysis we will use Goal Value instead of the price. Th
 
 ## Pre-requisites
 
-Module has no dependencies on other modules
+Module has no dependencies on other specific modules. Since we implement our module in the category "Best use of xConnect and/or Universal Tracker" for correct work, you will need the following instances:
+
+- xConnect
+- Universal tracker
 
 ## Installation
 
