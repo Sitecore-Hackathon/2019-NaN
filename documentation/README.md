@@ -50,13 +50,21 @@ Perform the following steps to install the module:
 Console utilite to generate interactions.
 Paramters:
 -h, --host <url> - url to UT collection service. Default value: http://sitecore.tracking.collection.service/
+    
 -i, --import <path> - generate interactions from provided csv file. Default value: interactions.csv
+    
 -g - provide this paramter to generate interactions from parameters
+
 -n, --number <int> - count of interactions to generate. Default value: 10
+    
 -c, --customerid <int> - customerid to generate interactions for. If not provided generate a random id.
+    
 -s, --startdate <date> - start date of time range. Used with --max and --min paramters. Default value: 12/1/2017
+    
 -e, --enddate <date> - end date of time randge. Used with --max and --min paramters. Default value: 12/9/2018
+    
 --max - generate most valuable user with 10(default) interactions per month in time range. Parameters -n override count of interaction per month. -c can be provided
+
 --min - generate least valuable user with 1 interaction during all time range. 
 
 Examples:
