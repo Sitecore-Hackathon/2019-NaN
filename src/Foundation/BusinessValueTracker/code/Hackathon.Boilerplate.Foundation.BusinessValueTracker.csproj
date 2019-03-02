@@ -152,6 +152,7 @@
     <Compile Include="Processors\ConvertDemoGoal.cs" />
     <Compile Include="Processors\TaskAgent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schedulers\TaskAgentScheduler.cs" />
     <Compile Include="Services\BusinessScoreService.cs" />
     <Compile Include="Services\RfmCalculateService.cs" />
     <Compile Include="Workers\RfmTrainingWorker.cs" />
