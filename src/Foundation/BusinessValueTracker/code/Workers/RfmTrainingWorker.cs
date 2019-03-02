@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Cortex;
+using Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Projections;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Sitecore.Processing.Engine.Abstractions;

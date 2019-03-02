@@ -59,8 +59,8 @@ Unpack the archive [Demo.zip](https://github.com/Sitecore-Hackathon/2019-NaN/ins
 
 To see how the module works, you can use Power Shell scripts:
 
-- To simulate the most important business customers use the script GenerateMostValuableUser.ps1
-- To simulate the least valuable business customers customers use the script GenerateLeastValuableUser.ps1
+- To simulate the most important business customers use the script GenerateMostValuableUser.ps1 from the Demo.zip
+- To simulate the least valuable business customers customers use the script GenerateLeastValuableUser.ps1 from the Demo.zip
 
 Console utilite to generate interactions.
 Paramters:

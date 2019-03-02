@@ -10,17 +10,17 @@ using Sitecore.Processing.Engine.ML.Abstractions;
 using Sitecore.Processing.Engine.Projection;
 using Sitecore.XConnect;
 
-namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Cortex
+namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Projections
 {
     public class GoalsProjectionModel : IModel<Interaction>
     {
-        private readonly IMLService _mlService;
+        private readonly IBusinessScoreService _businessScoreService;
         private readonly ILogger<GoalsProjectionModel> _logger;
 
-        public GoalsProjectionModel(IReadOnlyDictionary<string, string> options, IMLService mlService, ILogger<GoalsProjectionModel> logger)
+        public GoalsProjectionModel(IReadOnlyDictionary<string, string> options, IBusinessScoreService businessScoreService, ILogger<GoalsProjectionModel> logger)
         {
             _logger = logger;
-            _mlService = mlService;
+            _businessScoreService = businessScoreService;
 
        
             Projection = Sitecore.Processing.Engine.Projection.Projection.Of<Interaction>()
@@ -37,7 +37,7 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Cortex
 
         public Task<ModelStatistics> TrainAsync(string schemaName, CancellationToken cancellationToken, params TableDefinition[] tables)
         {
-            return _mlService.Train(schemaName, cancellationToken, tables);
+            return _businessScoreService.Train(schemaName, cancellationToken, tables);
         }
 
         public Task<IReadOnlyList<object>> EvaluateAsync(string schemaName, CancellationToken cancellationToken, params TableDefinition[] tables)

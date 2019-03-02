@@ -13,7 +13,7 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Mappers
             var invoices = new List<ClientEvent>();
             foreach (var data in dataRows)
             {
-                invoices.Add(data.ToPurchaseOutcome());
+                invoices.Add(data.ToGoalOutcome());
             }
 
             var groupedData = invoices.AsEnumerable().GroupBy(x => x.ContactId);
@@ -21,7 +21,7 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Mappers
             return groupedData.Select(data => new Client { ClientId = data.Key, ClientEvents = data.ToList() }).ToList();
         }
 
-        public static ClientEvent ToPurchaseOutcome(this IDataRow dataRow)
+        public static ClientEvent ToGoalOutcome(this IDataRow dataRow)
         {
             var result = new ClientEvent();
             var customerId = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == Constants.DemoGoal.CustomerIdKey);

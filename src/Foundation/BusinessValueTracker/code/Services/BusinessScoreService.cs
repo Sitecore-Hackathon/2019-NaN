@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Hackathon.Boilerplate.Foundation.BusinessValueTracker.Facets;
 using Hackathon.Boilerplate.Foundation.BusinessValueTracker.Mappers;
 using Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models;
-using Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Cortex;
+using Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Projections;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Sitecore.ContentTesting.ML.Workers;
@@ -18,16 +18,16 @@ using Sitecore.XConnect.Collection.Model;
 
 namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Services
 {
-    public class MLService : BaseWorker, IMLService
+    public class BusinessScoreService : BaseWorker, IBusinessScoreService
     {
-        private readonly ILogger<MLService> _logger;
+        private readonly ILogger<BusinessScoreService> _logger;
         private readonly ITableStoreFactory _tableStoreFactory;
         private readonly RfmCalculateService _rfmCalculateService;
         private readonly IServiceProvider _serviceProvider;
 
         private static List<Client> _clients;
 
-        public MLService(ITableStoreFactory tableStoreFactory, ILogger<MLService> logger, IServiceProvider serviceProvider)
+        public BusinessScoreService(ITableStoreFactory tableStoreFactory, ILogger<BusinessScoreService> logger, IServiceProvider serviceProvider)
             : base(tableStoreFactory)
         {
             _tableStoreFactory = tableStoreFactory;
@@ -39,7 +39,7 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Services
         public async Task<ModelStatistics> Train(string schemaName, CancellationToken cancellationToken,
             params TableDefinition[] tables)
         {
-            _logger.LogInformation("Executing Train method of MLService for table with schema=" + schemaName);
+            _logger.LogInformation("Executing Train method for table with schema=" + schemaName);
 
             var tableStore = _tableStoreFactory.Create(schemaName);
             var data = await GetDataRowsAsync(tableStore, tables.First().Name, cancellationToken);
@@ -71,6 +71,7 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Services
                             ContactBehaviorProfile.DefaultFacetKey,
                             RfmContactFacet.DefaultFacetKey
                         ));
+
                         if (contact != null)
                         {
                             var rfmFacet = contact.GetFacet<RfmContactFacet>(RfmContactFacet.DefaultFacetKey) ?? new RfmContactFacet();
@@ -85,8 +86,7 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Services
 
                             xdbContext.SetFacet(contact, RfmContactFacet.DefaultFacetKey, rfmFacet);
 
-                            _logger.LogInformation(string.Format("RFM info: customerId={0}, R={1}, F={2}, M={3}, Recency={4}, Frequency={5}, Monetary={6}, CLUSTER={7}",
-                                identifier, rfmFacet.R, rfmFacet.F, rfmFacet.M, rfmFacet.Recency, rfmFacet.Frequency, rfmFacet.Monetary, rfmFacet.Cluster));
+                            _logger.LogInformation($"RFM info: customerId={identifier}, R={rfmFacet.R}, F={rfmFacet.F}, M={rfmFacet.M}, Recency={rfmFacet.Recency}, Frequency={rfmFacet.Frequency}, Monetary={rfmFacet.Monetary}, CLUSTER={rfmFacet.Cluster}");
 
                         }
                     }
@@ -99,29 +99,11 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Services
         public async Task<IReadOnlyList<object>> Evaluate(string schemaName, CancellationToken cancellationToken,
             params TableDefinition[] tables)
         {
-            var tableStore = _tableStoreFactory.Create(schemaName);
-            var data = await GetDataRowsAsync(tableStore, tables.First().Name, cancellationToken);
-
-            var results = new List<PredictionResult>();
-
-            foreach (var dataRow in data)
-            {
-                if (dataRow.Enabled())
-                {
-                    var customer = dataRow.Schema.Fields.FirstOrDefault(x => x.Name == "CustomerId");
-                    if (customer != null)
-                    {
-                        var customerId = dataRow.GetInt64(dataRow.Schema.GetFieldIndex("CustomerId"));
-                        var rfm = dataRow.MapToRfmFacet();
-                    }
-                }
-            }
-
-            return results;
+            return new List<object>();
         }
     }
 
-    public interface IMLService
+    public interface IBusinessScoreService
     {
         Task<ModelStatistics> Train(string schemaName, CancellationToken cancellationToken,
             params TableDefinition[] tables);
