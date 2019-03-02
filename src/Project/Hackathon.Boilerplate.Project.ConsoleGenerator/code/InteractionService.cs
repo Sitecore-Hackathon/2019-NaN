@@ -38,37 +38,42 @@ namespace Hackathon.Boilerplate.Project.ConsoleGenerator
         {
             string IdentificationSource = "demo";
             string channelId = Guid.Parse("DF9900DE-61DD-47BF-9628-058E78EF05C6").ToString();
-
+            List<Task> tasks = new List<Task>();
             foreach (var interaction in interactions.GroupBy(x => x.CustomerId))
             {
-                var events = interaction.Select(x => x.GetEvent()).ToArray();
-                var defaultInteractionQuery = UTEntitiesBuilder.Interaction()
-                                                           .ChannelId(channelId)
-                                                           .Initiator(InteractionInitiator.Brand)
-                                                           .Contact(IdentificationSource, "112233");
-
-                var defaultInteraction = defaultInteractionQuery.Build();
-                using (var session = SitecoreUTSessionBuilder.SessionWithHost(instanceUrl)
-                                                        .DefaultInteraction(defaultInteraction)
-                                                        .BuildSession())
-                {
-                    foreach (var e in events)
-                    {
-                        var eventRequest = UTRequestBuilder.GoalEvent(e.DefinitionId, e.Timestamp.GetValueOrDefault())
-                                .EngagementValue(e.EngagementValue.GetValueOrDefault())
-                                .AddCustomValues(e.CustomValues)
-                                .Duration(new TimeSpan(3000))
-                                .ItemId(e.ItemId)
-                                .Text(e.Text).Build();
-                        var eventResponse = await session.TrackGoalAsync(eventRequest);
-                        Console.WriteLine("Track EVENT RESULT: " + eventResponse.StatusCode);
-                    }
-                }
-                Console.WriteLine($"Customer {interaction.Key} imported");
+                await PushCustomer(IdentificationSource, channelId, interaction);
             }
         }
 
-        internal async Task GenerateInteractions(int customerId, int count)
+        private async Task PushCustomer(string IdentificationSource, string channelId, IGrouping<string, Interaction> interaction)
+        {
+            var events = interaction.Select(x => x.GetEvent()).ToArray();
+            var defaultInteractionQuery = UTEntitiesBuilder.Interaction()
+                                                       .ChannelId(channelId)
+                                                       .Initiator(InteractionInitiator.Brand)
+                                                       .Contact(IdentificationSource, "112233");
+
+            var defaultInteraction = defaultInteractionQuery.Build();
+            using (var session = SitecoreUTSessionBuilder.SessionWithHost(instanceUrl)
+                                                    .DefaultInteraction(defaultInteraction)
+                                                    .BuildSession())
+            {
+                foreach (var e in events)
+                {
+                    var eventRequest = UTRequestBuilder.GoalEvent(e.DefinitionId, e.Timestamp.GetValueOrDefault())
+                            .EngagementValue(e.EngagementValue.GetValueOrDefault())
+                            .AddCustomValues(e.CustomValues)
+                            .Duration(new TimeSpan(3000))
+                            .ItemId(e.ItemId)
+                            .Text(e.Text).Build();
+                    var eventResponse = await session.TrackGoalAsync(eventRequest);
+                    Console.WriteLine("Track EVENT RESULT: " + eventResponse.StatusCode);
+                }
+            }
+            Console.WriteLine($"Customer {interaction.Key} imported");
+        }
+
+        internal async Task GenerateInteractions(string customerId, int count)
         {
             var interactions = new List<Interaction>();
             var rand = new Random();
@@ -88,7 +93,7 @@ namespace Hackathon.Boilerplate.Project.ConsoleGenerator
             await PushInteractiosToUT(interactions);
         }
 
-        internal async Task GenerateMostValuableCustomers(int customerId, int count, DateTime startDate, DateTime endDate)
+        internal async Task GenerateMostValuableCustomers(string customerId, int count, DateTime startDate, DateTime endDate)
         {
             var interactions = new List<Interaction>();
             var rand = new Random();
@@ -111,7 +116,7 @@ namespace Hackathon.Boilerplate.Project.ConsoleGenerator
             await PushInteractiosToUT(interactions);
         }
 
-        internal async Task GenerateLeastValuableCustomers(int customerId, DateTime startDate, DateTime endDate)
+        internal async Task GenerateLeastValuableCustomers(string customerId, DateTime startDate, DateTime endDate)
         {
             var interactions = new List<Interaction>();
             var rand = new Random();
