@@ -40,7 +40,7 @@ namespace Hackathon.Boilerplate.Project.ConsoleGenerator
         public string ImportFile { get; set; }
         [Option('g', "generate", HelpText = "Will generate interactions", Default = true)]
         public bool IsGenerateMode { get; set; }
-        [Option('n', "number", HelpText = "Number of interactions to generate", Default = 10)]
+        [Option('n', "number", HelpText = "Number of interactions to generate", Default = 1000)]
         public int InteractionNumber { get; set; }
         [Option('c', "customerid", HelpText = "Customer id to generate interactions", Default = 1234)]
         public int CustomerId { get; set; }

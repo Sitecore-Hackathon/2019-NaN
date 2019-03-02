@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Hackathon.Boilerplate.Foundation.BusinessValueTracker.Facets;
 using Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Cortex;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -12,11 +11,10 @@ using Sitecore.Processing.Engine.ML.Abstractions;
 using Sitecore.Processing.Engine.Projection;
 using Sitecore.Processing.Engine.Storage.Abstractions;
 using Sitecore.XConnect;
-using Sitecore.XConnect.Collection.Model;
 
 namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Workers
 {
-    public class RfmTrainingWorker : IDeferredWorker//TrainingWorker<Interaction>
+    public class RfmTrainingWorker : IDeferredWorker
     {
         private readonly IModel<Interaction> _model;
         private readonly RfmTrainingWorkerOptionsDictionary _options;

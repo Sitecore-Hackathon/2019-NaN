@@ -131,6 +131,12 @@
   </Choose>
   <ItemGroup>
     <Content Include="App_Config\Include\Foundation\Foundation.BusinessValueTracker.config" />
+    <Content Include="App_Config\ProcessingEngine\sc.Demo.GoalsProjectionModel.Models.xml" />
+    <Content Include="App_Config\ProcessingEngine\sc.Demo.Processing.Engine.ML.Workers.xml" />
+    <Content Include="App_Config\ProcessingEngine\sc.Demo.Processing.Services.MLNet.xml" />
+    <Content Include="App_Config\ProcessingEngine\sc.XConnect.Client.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conditionals\ClusterMatch.cs" />
@@ -139,12 +145,14 @@
     <Compile Include="Extentions\ContactModelMapper.cs" />
     <Compile Include="Facets\RfmContactFacet.cs" />
     <Compile Include="Models\Cortex\ContactProjectionModel.cs" />
-    <Compile Include="Models\Cortex\DemoGoalsProjectionModel.cs" />
+    <Compile Include="Models\Cortex\GoalsProjectionModel.cs" />
     <Compile Include="Models\Cortex\PredictionResult.cs" />
     <Compile Include="Models\Cortex\RfmStatistics.cs" />
     <Compile Include="Models\CustomerBusinessValue.cs" />
     <Compile Include="Models\Events\DemoGoal.cs" />
     <Compile Include="Models\Events\EventType.cs" />
+    <Compile Include="Models\Xdb\XdbContactModel.cs" />
+    <Compile Include="Models\Xdb\XdbGoalModel.cs" />
     <Compile Include="Processors\ConvertDemoGoal.cs" />
     <Compile Include="Processors\TaskAgent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

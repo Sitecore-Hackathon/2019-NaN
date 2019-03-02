@@ -47,7 +47,7 @@ namespace Hackathon.Boilerplate.Project.ConsoleGenerator
                 var defaultInteractionQuery = UTEntitiesBuilder.Interaction()
                                                            .ChannelId(channelId)
                                                            .Initiator(InteractionInitiator.Brand)
-                                                           .Contact(IdentificationSource, interaction.Key.ToString());
+                                                           .Contact(IdentificationSource, "112233");
                 //foreach (var e in events)
                 //{
                 //    defaultInteractionQuery.AddEvents(e);

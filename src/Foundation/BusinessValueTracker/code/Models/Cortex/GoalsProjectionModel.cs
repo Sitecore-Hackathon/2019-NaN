@@ -12,12 +12,12 @@ using Sitecore.XConnect;
 
 namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Cortex
 {
-    public class DemoGoalsProjectionModel : IModel<Interaction>
+    public class GoalsProjectionModel : IModel<Interaction>
     {
         private readonly IMLService _mlService;
-        private readonly ILogger<DemoGoalsProjectionModel> _logger;
+        private readonly ILogger<GoalsProjectionModel> _logger;
 
-        public DemoGoalsProjectionModel(IReadOnlyDictionary<string, string> options, IMLService mlService, ILogger<DemoGoalsProjectionModel> logger)
+        public GoalsProjectionModel(IReadOnlyDictionary<string, string> options, IMLService mlService, ILogger<GoalsProjectionModel> logger)
         {
             _logger = logger;
             _mlService = mlService;
@@ -25,11 +25,11 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Cortex
        
             Projection = Sitecore.Processing.Engine.Projection.Projection.Of<Interaction>()
                 .CreateTabular(Constants.DemoGoal.ProjectionTableName,
-                    interaction => interaction.Events.OfType<DemoGoal>(),
+                    interaction => interaction.Events.OfType<Goal>().Where(x => x.DefinitionId == DemoGoal.DemoGoalDefinitionId),
                     cfg => cfg.Key(Constants.DemoGoal.ProjectionKey, x => x.Id)
                         .Attribute(Constants.DemoGoal.ProjectionTimestamp, x => x.Timestamp)
                         .Attribute(Constants.DemoGoal.ProjectionEngagementValue, x => x.EngagementValue)
-                        .Attribute(Constants.DemoGoal.CustomerIdKey, x => x.CustomValues["CustomerId"])
+                        .Attribute(Constants.DemoGoal.CustomerIdKey, x => x.CustomValues["customerid"])
                 );
 
            

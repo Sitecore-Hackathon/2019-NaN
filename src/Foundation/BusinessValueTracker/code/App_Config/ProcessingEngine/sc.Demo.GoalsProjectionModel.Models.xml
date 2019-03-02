@@ -1,0 +1,11 @@
+<Settings>
+  <Sitecore>
+    <Processing>
+      <Services>
+        <PurchaseInteractionModel>
+          <Type>Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Cortex.GoalsProjectionModel, Hackathon.Boilerplate.Foundation.BusinessValueTracker</Type>
+        </PurchaseInteractionModel>
+      </Services>
+    </Processing>
+  </Sitecore>
+</Settings>

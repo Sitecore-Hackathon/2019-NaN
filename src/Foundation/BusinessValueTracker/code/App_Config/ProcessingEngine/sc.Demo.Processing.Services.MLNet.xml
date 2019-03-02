@@ -1,0 +1,15 @@
+﻿<Settings>
+    <Sitecore>
+        <Processing>
+            <Services>
+                <IMLNetService>
+                    <Type>Hackathon.Boilerplate.Foundation.BusinessValueTracker.Services.MLService, Hackathon.Boilerplate.Foundation.BusinessValueTracker</Type>
+                    <As>Hackathon.Boilerplate.Foundation.BusinessValueTracker.Services.IMLService, Hackathon.Boilerplate.Foundation.BusinessValueTracker</As>
+                    <LifeTime>Transient</LifeTime>
+                    <Options>
+                    </Options>
+                </IMLNetService>
+            </Services>
+        </Processing>
+    </Sitecore>
+</Settings>
