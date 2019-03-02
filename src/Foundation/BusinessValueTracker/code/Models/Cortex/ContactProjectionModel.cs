@@ -36,6 +36,7 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Cortex
                     .Attribute("Recency", c => c.GetFacet<RfmContactFacet>() == null ? 0 : c.GetFacet<RfmContactFacet>().Recency)
                     .Attribute("Frequency", c => c.GetFacet<RfmContactFacet>() == null ? 0 : c.GetFacet<RfmContactFacet>().Frequency)
                     .Attribute("Monetary", c => c.GetFacet<RfmContactFacet>() == null ? 0 : c.GetFacet<RfmContactFacet>().Monetary)
+                    .Attribute("CustomerId", c => c.Identifiers.FirstOrDefault(x => x.Source == Constants.XConnect.IdentificationSource) == null ? "0" : c.Identifiers.First(x => x.Source == Constants.XConnect.IdentificationSource).Identifier)
                     .Attribute("Email", c => c.Emails() == null ? "empty" : c.Emails().PreferredEmail == null ? "empty" : c.Emails().PreferredEmail.SmtpAddress));
 
 
