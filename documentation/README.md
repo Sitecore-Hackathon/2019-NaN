@@ -70,16 +70,19 @@ If the script fails, copy the:
 - \App_Data\jobs\continuous\IndexWorker\App_data\Models"
 
 Files:
-sc.Demo.GoalsProjectionModel.Models.xml
-sc.Demo.Processing.Engine.ML.Workers.xml
-sc.Demo.Processing.Services.MLNet.xml
+- sc.Demo.GoalsProjectionModel.Models.xml
+- sc.Demo.Processing.Engine.ML.Workers.xml
+- sc.Demo.Processing.Services.MLNet.xml
 
 to the next directory:
+
 \App_Data\jobs\continuous\ProcessingEngine\App_Data\Config\Sitecore\Processing
 
 ### Step 3
 You need to make a modification to the file sc.XConnect.Client.xml which is located in the following directory:
+```xml
 {sc91.xconnect.sc}\App_Data\jobs\continuous\ProcessingEngine\App_Data\Config\Sitecore\XConnect\
+```
 where {sc91.xconnect.sc} - your xConnect directory
 
 Insert the next code
