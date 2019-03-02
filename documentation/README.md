@@ -153,6 +153,9 @@ Value | Group | Recommendations
 333 | VIP | These are the best customers. You can try to sell them a new product or service. Send them special offers
 
 
+
+## Tools
+
 ### Console utilite to generate interactions.
 Paramters:
 
