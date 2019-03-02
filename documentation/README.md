@@ -16,7 +16,8 @@ The algorithm of grouping users is based on the adapted RFM analysis borrowed fr
 
 ![rfm](https://github.com/Sitecore-Hackathon/2019-NaN/blob/master/documentation/images/rfm.jpg)
 
-Unlike the original RFM analysis we will use Goal Value instead of the price. The most business valuable group has the maximum RFM coefficient, users who use the service a little or are going to leave – the minimum. In the future after segmentation, we can send to users personalized offers, display personalized advertising for greater involvement and sales.
+Unlike the original RFM analysis we use Goal Value instead of the price. The most business valuable group has the maximum RFM coefficient, users who use the service a little or are going to leave – the minimum. In the future after segmentation, we can send to users personalized offers, display personalized advertising for greater involvement and sales.
+
 
 Read more: https://en.wikipedia.org/wiki/RFM_(customer_value)
 
@@ -28,7 +29,7 @@ Using the Universal Tracker, we collect the values of the event from various res
 
 ## Pre-requisites
 
-Module has no dependencies on other specific modules. Since we implement our module in the category "Best use of xConnect and/or Universal Tracker" for correct work, you will need the following instances:
+Module has no dependencies on other specific modules. Since we implement our module in the category "Best use of xConnect and/or Universal Tracker" for correct work, you need the following instances:
 
 - xConnect
 - Universal tracker
