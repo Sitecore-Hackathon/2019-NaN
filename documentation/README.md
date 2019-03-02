@@ -50,10 +50,23 @@ First of all, you need an installed instance of Sitecore 9.1 and Universal track
 
 
 ### Step 1:
-Install the sitecore package [BusinessValueTracker.zip](https://github.com/Sitecore-Hackathon/2019-NaN/install/BusinessValueTracker.zip)
+Install the sitecore package [BusinessValueTracker.SitecorePackage.zip](https://github.com/Sitecore-Hackathon/2019-NaN/sc.package/BusinessValueTracker.SitecorePackage.zip)
+
+### Step 2:
+Unpack the archive [BusinessValueTracker.ConfigDeploy.zip](https://github.com/Sitecore-Hackathon/2019-NaN/sc.package/BusinessValueTracker.ConfigDeploy.zip) to any folder.
+Update "xconnect" variable in "xConnectConfigs.Deploy.ps1" script with correct path to your xConnect instance.
+Run the script from Power Shell.
+
+If the script fails, copy the configuration files to the following xConnect folders:
+- \\App_Data\\jobs\\continuous\\ProcessingEngine\\App_Data\\Models"
+- \\App_Data\\Models"
+- \\App_Data\\jobs\\continuous\\IndexWorker\\App_data\\Models"
 
 ### Step 2: 
-Unpack the archive [Demo.zip](https://github.com/Sitecore-Hackathon/2019-NaN/install/Demo.zip) to any folder and run the "InitialImport.ps1" script from Power Shell to import the demo data if your Collection host of Universal Tracker has a name 'http://sitecore.tracking.collection.service/'. You can edit the Power Shell script by adding the "-h " parameter with your own url. The demo data contains user generated events for Universal Tracker service.
+Unpack the archive [Demo.zip](https://github.com/Sitecore-Hackathon/2019-NaN/sc.package/Demo.zip) to any folder. 
+Run the "InitialImport.ps1" script from Power Shell to import the demo data if your Collection host of Universal Tracker has a name 'http://sitecore.tracking.collection.service/'. You can edit the Power Shell script by adding the "-h " parameter with your own url. The demo data contains user generated events for Universal Tracker service.
+
+It takes quite a long time from an hour to two. You can interrupt the process after 15-20 minutes by simply closing the console. This should be enough data for the demo. In this case, fewer clients will be recorded.
 
 ## Usage
 
@@ -61,6 +74,8 @@ To see how the module works, you can use Power Shell scripts:
 
 - To simulate the most important business customers use the script GenerateMostValuableUser.ps1 from the Demo.zip
 - To simulate the least valuable business customers customers use the script GenerateLeastValuableUser.ps1 from the Demo.zip
+
+
 
 Console utilite to generate interactions.
 Paramters:
