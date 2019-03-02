@@ -30,7 +30,7 @@ namespace Hackathon.Boilerplate.Project.ConsoleGenerator
                     if (x.GenerateMostValuable)
                     {
                         Console.WriteLine($"Generating interactions for {x.CustomerId} in the range {start} - {end}");
-                        await service.GenerateMostValuableCustomers(x.CustomerId, 10, start, end);
+                        await service.GenerateMostValuableCustomers(x.CustomerId, x.InteractionNumber, start, end);
                         Console.WriteLine("Generation finished");
                         return;
                     }
