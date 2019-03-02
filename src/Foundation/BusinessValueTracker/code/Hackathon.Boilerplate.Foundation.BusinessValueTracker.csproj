@@ -136,6 +136,7 @@
     <Content Include="App_Config\ProcessingEngine\sc.Demo.Processing.Services.MLNet.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conditionals\RfmMatch.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Mappers\ContactMapper.cs" />
     <Compile Include="Extentions\LinqExtensions.cs" />
