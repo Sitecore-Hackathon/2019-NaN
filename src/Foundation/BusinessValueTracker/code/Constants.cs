@@ -16,6 +16,7 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker
             public const string ProjectionContactResultTableName = "DemoContactResultTable";
 
             public const string CustomerIdKey = "CustomerId";
+            public const string CustomerIdKeyValue = "customerid";
         }
 
         public static class XConnect

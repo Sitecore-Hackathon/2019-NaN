@@ -29,7 +29,7 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Models.Cortex
                     cfg => cfg.Key(Constants.DemoGoal.ProjectionKey, x => x.Id)
                         .Attribute(Constants.DemoGoal.ProjectionTimestamp, x => x.Timestamp)
                         .Attribute(Constants.DemoGoal.ProjectionEngagementValue, x => x.EngagementValue)
-                        .Attribute(Constants.DemoGoal.CustomerIdKey, x => x.CustomValues["customerid"])
+                        .Attribute(Constants.DemoGoal.CustomerIdKey, x => x.CustomValues[Constants.DemoGoal.CustomerIdKeyValue])
                 );
 
            
