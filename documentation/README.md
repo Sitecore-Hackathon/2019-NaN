@@ -18,6 +18,8 @@ The algorithm of grouping users is based on the adapted RFM analysis borrowed fr
 
 Unlike the original RFM analysis we will use Goal Value instead of the price. The most business valuable group has the maximum RFM coefficient, users who use the service a little or are going to leave – the minimum. In the future after segmentation, we can send to users personalized offers, display personalized advertising for greater involvement and sales.
 
+Read more: https://en.wikipedia.org/wiki/RFM_(customer_value)
+
 ### How it works
 
 Using the Universal Tracker, we collect the values of the event from various resources. The value is the ratio (number) of how important the action was made by the customer. All of this data is captured by the xConnect and then processed by the Processing Engine. During event processing, we segment customers, identify their "business value" and store it.
