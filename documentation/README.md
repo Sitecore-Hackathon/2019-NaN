@@ -50,7 +50,7 @@ First of all, you need an installed instance of Sitecore 9.1 and Universal track
 
 
 ### Step 1:
-Install the sitecore package [BusinessValueTracker.SitecorePackage.zip](https://github.com/Sitecore-Hackathon/2019-NaN/blob/sc.package/BusinessValueTracker.SitecorePackage.zip)
+Install the sitecore package [BusinessValueTracker.SitecorePackage.zip](https://github.com/Sitecore-Hackathon/2019-NaN/blob/master/sc.package/BusinessValueTracker.SitecorePackage.zip.zip)
 
 ### Step 2:
 Unpack the archive [BusinessValueTracker.ConfigDeploy.zip](https://github.com/Sitecore-Hackathon/2019-NaN/blob/master/sc.package/BusinessValueTracker.ConfigDeploy.zip) to any folder.
