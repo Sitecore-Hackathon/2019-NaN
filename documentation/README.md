@@ -50,10 +50,10 @@ First of all, you need an installed instance of Sitecore 9.1 and Universal track
 
 
 ### Step 1:
-Install the sitecore package [BusinessValueTracker.SitecorePackage.zip](https://github.com/Sitecore-Hackathon/2019-NaN/sc.package/BusinessValueTracker.SitecorePackage.zip)
+Install the sitecore package [BusinessValueTracker.SitecorePackage.zip](https://github.com/Sitecore-Hackathon/2019-NaN/blob/sc.package/BusinessValueTracker.SitecorePackage.zip)
 
 ### Step 2:
-Unpack the archive [BusinessValueTracker.ConfigDeploy.zip](https://github.com/Sitecore-Hackathon/2019-NaN/sc.package/BusinessValueTracker.ConfigDeploy.zip) to any folder.
+Unpack the archive [BusinessValueTracker.ConfigDeploy.zip](https://github.com/Sitecore-Hackathon/2019-NaN/blob/master/sc.package/BusinessValueTracker.ConfigDeploy.zip) to any folder.
 Update "xconnect" variable in "xConnectConfigs.Deploy.ps1" script with correct path to your xConnect instance.
 Run the script from Power Shell.
 
@@ -63,7 +63,7 @@ If the script fails, copy the configuration files to the following xConnect fold
 - \\App_Data\\jobs\\continuous\\IndexWorker\\App_data\\Models"
 
 ### Step 2: 
-Unpack the archive [Demo.zip](https://github.com/Sitecore-Hackathon/2019-NaN/sc.package/Demo.zip) to any folder. 
+Unpack the archive [Demo.zip](https://github.com/Sitecore-Hackathon/2019-NaN/blob/sc.package/Demo.zip) to any folder. 
 Run the "InitialImport.ps1" script from Power Shell to import the demo data if your Collection host of Universal Tracker has a name 'http://sitecore.tracking.collection.service/'. You can edit the Power Shell script by adding the "-h " parameter with your own url. The demo data contains user generated events for Universal Tracker service.
 
 It takes quite a long time from an hour to two. You can interrupt the process after 15-20 minutes by simply closing the console. This should be enough data for the demo. In this case, fewer clients will be recorded.
