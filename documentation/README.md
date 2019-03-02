@@ -61,14 +61,26 @@ Unpack the archive [BusinessValueTracker.ConfigDeploy.zip](https://github.com/Si
 Update "xconnect" variable in "xConnectConfigs.Deploy.ps1" script with correct path to your xConnect instance.
 Run the script from Power Shell.
 
-If the script fails, copy the configuration files to the following xConnect folders:
-- \\App_Data\\jobs\\continuous\\ProcessingEngine\\App_Data\\Models"
-- \\App_Data\\Models"
-- \\App_Data\\jobs\\continuous\\IndexWorker\\App_data\\Models"
+If the script fails, copy the:
+
+'ContactModel, 1.0.json' file to the following xConnect folders:
+
+- \App_Data\jobs\continuous\ProcessingEngine\App_Data\Models"
+- \App_Data\Models"
+- \App_Data\jobs\continuous\IndexWorker\App_data\Models"
+
+Files:
+sc.Demo.GoalsProjectionModel.Models.xml
+sc.Demo.Processing.Engine.ML.Workers.xml
+sc.Demo.Processing.Services.MLNet.xml
+
+to the next directory:
+\App_Data\jobs\continuous\ProcessingEngine\App_Data\Config\Sitecore\Processing
 
 ### Step 3
 You need to make a modification to the file sc.XConnect.Client.xml which is located in the following directory:
-sc91.xconnect.sc\App_Data\jobs\continuous\ProcessingEngine\App_Data\Config\Sitecore\XConnect\
+{sc91.xconnect.sc}\App_Data\jobs\continuous\ProcessingEngine\App_Data\Config\Sitecore\XConnect\
+where {sc91.xconnect.sc} - your xConnect directory
 
 Insert the next code
 ```xml
