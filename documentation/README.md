@@ -187,7 +187,4 @@ Examples:
 
 ## Video
 
-
-https://youtu.be/YjWoZx4GH_A
-
 https://youtu.be/88sYOoU9FG0
