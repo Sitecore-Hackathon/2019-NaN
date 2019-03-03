@@ -61,14 +61,29 @@ Unpack the archive [BusinessValueTracker.ConfigDeploy.zip](https://github.com/Si
 Update "xconnect" variable in "xConnectConfigs.Deploy.ps1" script with correct path to your xConnect instance.
 Run the script from Power Shell.
 
-If the script fails, copy the configuration files to the following xConnect folders:
-- \\App_Data\\jobs\\continuous\\ProcessingEngine\\App_Data\\Models"
-- \\App_Data\\Models"
-- \\App_Data\\jobs\\continuous\\IndexWorker\\App_data\\Models"
+If the script fails, copy the:
+
+'ContactModel, 1.0.json' file to the following xConnect folders:
+
+- \App_Data\jobs\continuous\ProcessingEngine\App_Data\Models"
+- \App_Data\Models"
+- \App_Data\jobs\continuous\IndexWorker\App_data\Models"
+
+Files:
+- sc.Demo.GoalsProjectionModel.Models.xml
+- sc.Demo.Processing.Engine.ML.Workers.xml
+- sc.Demo.Processing.Services.MLNet.xml
+
+to the next directory:
+
+\App_Data\jobs\continuous\ProcessingEngine\App_Data\Config\Sitecore\Processing
 
 ### Step 3
 You need to make a modification to the file sc.XConnect.Client.xml which is located in the following directory:
-sc91.xconnect.sc\App_Data\jobs\continuous\ProcessingEngine\App_Data\Config\Sitecore\XConnect\
+```xml
+{sc91.xconnect.sc}\App_Data\jobs\continuous\ProcessingEngine\App_Data\Config\Sitecore\XConnect\
+```
+where {sc91.xconnect.sc} - your xConnect directory
 
 Insert the next code
 ```xml
@@ -94,8 +109,52 @@ To see how the module works, you can use Power Shell scripts:
 - To simulate the least valuable business customers customers use the script GenerateLeastValuableUser.ps1 from the Demo.zip
 
 
+Each contact will be defined in the following groups depending on its actions:
+
+### Leaving
+Value | Group | Recommendations
+--- | --- | ---
+111 | Lost | Most likely these clients have already left. It makes sense to send them an automatic chain of letters with an offer to return.
+112 | Single | Most likely these clients have already left. It makes sense to send them an automatic chain of letters with an offer to return.
+113 | Single | Most likely these clients have already left. It makes sense to send them an automatic chain of letters with an offer to return.
+121 | Leaving | These customers have already done some important actions on your service. You can try to get them back.
+122 | Leaving | These customers have already done some important actions on your service. You can try to get them back.
+123 | Leaving | These customers have already done some important actions on your service. You can try to get them back.
+131 | Leaving - Permanent | These customers you need to try to be sure to return. Offer them bonuses and loyalty programs.
+132 | Leaving  - Permanent good | These customers you need to try to be sure to return. Offer them bonuses and loyalty programs.
+133 | Leaving - Permanent VIP | These customers you need to try to be sure to return. Offer them bonuses and loyalty programs.
 
 
+### Sleeping
+Value | Group | Recommendations
+--- | --- | ---
+211 | Sleeping | These customers remember your service. Try to engage them with promotions.
+212 | Sleeping | These customers remember your service. Try to engage them with promotions.
+213 | Sleeping | These customers remember your service. Try to engage them with promotions.
+221 | Sleeping - Rare with low value | Maybe they're former clients. Find out why they are going to leave or left. We send them newsletters with interesting promotions.
+222 | Sleeping - Rare with middle value | Maybe they're former clients. Find out why they are going to leave or left. We send them newsletters with interesting promotions.
+223 | Sleeping - Rare with high value | Maybe they're former clients. Find out why they are going to leave or left. We send them newsletters with interesting promotions.
+231 | Sleeping - Permanent with low value | These customers remember your service. Try to engage them with promotions.
+232 | Sleeping - Permanent with middle value | These customers remember your service. Try to engage them with promotions.
+233 | Sleeping - Permanent with high value | These customers remember your service. Try to engage them with promotions.
+
+### Regular
+Value | Group | Recommendations
+--- | --- | ---
+311 | Novice - Low value | We send a chain of letters with a description of the benefits and answers to questions.
+312 | Novice with middle value | We send a chain of letters with a description of the benefits and answers to questions.
+313 | Novice with high value | We send a chain of letters with a description of the benefits and answers to questions. Add an interesting offer to keep the interest.
+321 | Regular with low value | We should try to increase their involvement.  We send them mails with related products and services.
+322 | Regular - Middle value | We should try to increase their involvement.  We send them mails with related products and services.
+323 | Regular - High value | These are good clients. Do not bore them with mailing. Only send a normal mails.
+323 | Very regular - Low value | You can try to engage customers even more. We send them links to related products and services.
+331 | Regular - High value | These are good clients. Do not bore them with mailing. Only send a normal mails.
+332 | Very regular - Middle value | These are the best customers. You can try to sell them a new product or service. Send them special offers
+333 | VIP | These are the best customers. You can try to sell them a new product or service. Send them special offers
+
+
+
+## Tools
 
 ### Console utilite to generate interactions.
 Paramters:
