@@ -41,14 +41,12 @@ You will also need frameworks:
 - .NET Core 2.1
 - .NET Framework 4.7.1
 
-## Installation
+## Installation & Configuration
 
 Perform the following steps to install the module:
 
-- Use the Sitecore Installation Wizard to install the package
+- Use the Sitecore Installation Wizard to install the packages
 - Upload demo data using the console application
-
-## Configuration
 
 First of all, you need an installed instance of Sitecore 9.1 and Universal tracker. 
 
@@ -189,3 +187,5 @@ Examples:
 
 ## Video
 
+
+https://youtu.be/YjWoZx4GH_A
