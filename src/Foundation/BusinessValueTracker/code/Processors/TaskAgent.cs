@@ -33,7 +33,7 @@ namespace Hackathon.Boilerplate.Foundation.BusinessValueTracker.Processors
                 var dataSourceOptions = new InteractionDataSourceOptionsDictionary(new InteractionExpandOptions(IpInfo.DefaultFacetKey), 5, 10);
                 var modelTrainingOptions = new ModelTrainingTaskOptions(typeof(GoalsProjectionModel).AssemblyQualifiedName, typeof(Interaction).AssemblyQualifiedName, new Dictionary<string, string> { ["TestCaseId"] = "Id" }, Constants.DemoGoal.ProjectionTableName, Constants.DemoGoal.ProjectionResultTableName);
 
-                var x = await taskManager.RegisterRfmModelTrainingTaskChainAsync(modelTrainingOptions, dataSourceOptions, TimeSpan.FromDays(1));
+                var x = await taskManager.RegisterRfmModelTrainingTaskChainAsync(modelTrainingOptions, dataSourceOptions, TimeSpan.FromHours(5));
                 Log.Info("TaskAgent RegisterAll taskId=" + x, this);
             }
             catch (Exception ex)
